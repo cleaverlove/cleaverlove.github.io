@@ -228,6 +228,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/debounce_throttle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cleaverlove">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royal Never Give UP">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/16/debounce_throttle/" itemprop="url">debounce_throttle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T20:05:45+08:00">
+                2019-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="防抖-debounce"><a href="#防抖-debounce" class="headerlink" title="防抖 debounce"></a>防抖 debounce</h2><h3 id="思路：每次触发事件都取消之前的延时调用方法"><a href="#思路：每次触发事件都取消之前的延时调用方法" class="headerlink" title="思路：每次触发事件都取消之前的延时调用方法"></a>思路：每次触发事件都取消之前的延时调用方法</h3><p>  说明：触发高频事件后的N秒内函数只会执行一次，如果n秒内高频事件再次触发，则重新计算事件<br>  场景： 按钮点击/input输入/页面的resize事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const debounce = (fn, delay, immediate) =&gt; &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  return function() &#123;</span><br><span class="line">    // 定时器有值，清除定时器</span><br><span class="line">    timer &amp;&amp; clearTimeout(timer);</span><br><span class="line">    // 如果immediate为true, 刚开始立即执行</span><br><span class="line">    const context = this;</span><br><span class="line">    if (immediate) &#123;</span><br><span class="line">      // 错误示范 timer = fn.apply(context, arguments);</span><br><span class="line">      !timer &amp;&amp; fn.apply(context, arguments);</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(() =&gt; &#123;</span><br><span class="line">      fn.apply(context, arguments);</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##节流 throttle</p>
+<h3 id="思路：每次触发事件时都判断当前是否有等待执行的延时函数"><a href="#思路：每次触发事件时都判断当前是否有等待执行的延时函数" class="headerlink" title="思路：每次触发事件时都判断当前是否有等待执行的延时函数"></a>思路：每次触发事件时都判断当前是否有等待执行的延时函数</h3><p>  说明：高频事件触发，但在N秒内只会执行一次，所以节流会稀释函数的执行频率<br>  场景：鼠标mousemove/touchmove事件,滚动条scroll事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const throttle = (fn, delay = 2000) =&gt; &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  // 在函数外围记录开始时间</span><br><span class="line">  let startTime = new Date();</span><br><span class="line">  return function() &#123;</span><br><span class="line">    const context = this;</span><br><span class="line">    // currentTime为调用时间</span><br><span class="line">    let currentTime = new Date();</span><br><span class="line">    // 调用时间大于等于开始时间，执行函数并且将调用时间重新设置为开始时间</span><br><span class="line">    if (currentTime - starTime &gt;= delay) &#123;</span><br><span class="line">      fn.apply(context, arguments);</span><br><span class="line">      startTime = currentTime;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 让方法在脱离事件后也能执行一次  场景是怎么样的？</span><br><span class="line">      timer = setTimeout(() =&gt; &#123;</span><br><span class="line">        fn.apply(context, arguments);</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/first-post/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -514,7 +639,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
