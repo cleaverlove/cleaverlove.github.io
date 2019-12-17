@@ -79,11 +79,14 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Royal Never Give UP">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta name="description" content="ES5和ES6除了写法不同之外的区别ES5常见的两种继承原型链继承123456789101112131415161718192021222324&#x2F;&#x2F; 定义父类function Parent(name) &amp;#123;  this.name = name;&amp;#125;Parent.prototype.getName = function() &amp;#123;  return this.name;&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES5 AND ES6 diff">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;17&#x2F;ES5%20AND%20ES6%20diff&#x2F;index.html">
 <meta property="og:site_name" content="Royal Never Give UP">
+<meta property="og:description" content="ES5和ES6除了写法不同之外的区别ES5常见的两种继承原型链继承123456789101112131415161718192021222324&#x2F;&#x2F; 定义父类function Parent(name) &amp;#123;  this.name = name;&amp;#125;Parent.prototype.getName = function() &amp;#123;  return this.name;&amp;#125">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-17T14:25:01.008Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -114,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/12/17/ES5 AND ES6 diff/"/>
 
 
 
 
 
-  <title>Royal Never Give UP</title>
+  <title>ES5 AND ES6 diff | Royal Never Give UP</title>
   
 
 
@@ -139,8 +142,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,9 +215,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -245,9 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/17/ES5%20AND%20ES6%20diff/" itemprop="url">ES5 AND ES6 diff</a></h1>
+          <h1 class="post-title" itemprop="name headline">ES5 AND ES6 diff</h1>
         
 
         <div class="post-meta">
@@ -297,9 +297,7 @@
       
 
       
-        
-          
-            <h1 id="ES5和ES6除了写法不同之外的区别"><a href="#ES5和ES6除了写法不同之外的区别" class="headerlink" title="ES5和ES6除了写法不同之外的区别"></a>ES5和ES6除了写法不同之外的区别</h1><h2 id="ES5常见的两种继承"><a href="#ES5常见的两种继承" class="headerlink" title="ES5常见的两种继承"></a>ES5常见的两种继承</h2><h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Parent.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Children</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">24</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过Children的prototype属性和Parent进行关联继承</span></span><br><span class="line">Children.prototype = <span class="keyword">new</span> Parent(<span class="string">'PMX'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Children.prototype.constructor === Parent.prototype.constructor === parent</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> Children();</span><br><span class="line"><span class="comment">// test.constructor === Children.prototype.constructor === parent</span></span><br><span class="line"></span><br><span class="line">test.age <span class="comment">// 23</span></span><br><span class="line">test.getName()； <span class="comment">// PMX</span></span><br></pre></td></tr></table></figure>
+        <h1 id="ES5和ES6除了写法不同之外的区别"><a href="#ES5和ES6除了写法不同之外的区别" class="headerlink" title="ES5和ES6除了写法不同之外的区别"></a>ES5和ES6除了写法不同之外的区别</h1><h2 id="ES5常见的两种继承"><a href="#ES5常见的两种继承" class="headerlink" title="ES5常见的两种继承"></a>ES5常见的两种继承</h2><h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Parent.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Children</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">24</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过Children的prototype属性和Parent进行关联继承</span></span><br><span class="line">Children.prototype = <span class="keyword">new</span> Parent(<span class="string">'PMX'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Children.prototype.constructor === Parent.prototype.constructor === parent</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> Children();</span><br><span class="line"><span class="comment">// test.constructor === Children.prototype.constructor === parent</span></span><br><span class="line"></span><br><span class="line">test.age <span class="comment">// 23</span></span><br><span class="line">test.getName()； <span class="comment">// PMX</span></span><br></pre></td></tr></table></figure>
 <p>  我们可以发现，整个继承过程，都是通过原型链之间的指向进行委托关联，直到最后形成了“由构造函数所构造”的结局。</p>
 <h3 id="构造函数继承"><a href="#构造函数继承" class="headerlink" title="构造函数继承"></a>构造函数继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.language = <span class="string">'js'</span>;</span><br><span class="line">  <span class="keyword">this</span>.value = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Children</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Parent.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> Children(<span class="number">666</span>);</span><br><span class="line">test.language <span class="comment">// js</span></span><br><span class="line">test.value <span class="comment">// 666</span></span><br></pre></td></tr></table></figure>
 <p>  构造继承关键在于，通过子类的内部调用父类，即通过使用apply()或者call()方法可以在将来新构造的对象上获取父类的成员和方法</p>
@@ -320,8 +318,6 @@
 </blockquote>
 <h3 id="另一种改变构造函数的方式"><a href="#另一种改变构造函数的方式" class="headerlink" title="另一种改变构造函数的方式"></a>另一种改变构造函数的方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Sub.prototype = <span class="keyword">new</span> Super();</span><br><span class="line">Sub.prototype.constructor = Sub; <span class="comment">// 若没有这句，效果就是ES5的原型链继承</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sub = <span class="keyword">new</span> Sub();</span><br><span class="line"></span><br><span class="line">Sub.__proto__ === <span class="built_in">Function</span>.prototype;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -338,137 +334,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/debounce_throttle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cleaverlove">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Royal Never Give UP">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/16/debounce_throttle/" itemprop="url">debounce_throttle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T20:05:45+08:00">
-                2019-12-16
-              </time>
+              <a href="/2019/12/16/debounce_throttle/" rel="next" title="debounce_throttle">
+                <i class="fa fa-chevron-left"></i> debounce_throttle
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="防抖-debounce"><a href="#防抖-debounce" class="headerlink" title="防抖 debounce"></a>防抖 debounce</h2><h3 id="思路：每次触发事件都取消之前的延时调用方法"><a href="#思路：每次触发事件都取消之前的延时调用方法" class="headerlink" title="思路：每次触发事件都取消之前的延时调用方法"></a>思路：每次触发事件都取消之前的延时调用方法</h3><p>  说明：触发高频事件后的N秒内函数只会执行一次，如果n秒内高频事件再次触发，则重新计算事件<br>  场景： 按钮点击/input输入/页面的resize事件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const debounce = (fn, delay, immediate) =&gt; &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  return function() &#123;</span><br><span class="line">    // 定时器有值，清除定时器</span><br><span class="line">    timer &amp;&amp; clearTimeout(timer);</span><br><span class="line">    // 如果immediate为true, 刚开始立即执行</span><br><span class="line">    const context = this;</span><br><span class="line">    if (immediate) &#123;</span><br><span class="line">      // 错误示范 timer = fn.apply(context, arguments);</span><br><span class="line">      !timer &amp;&amp; fn.apply(context, arguments);</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(() =&gt; &#123;</span><br><span class="line">      fn.apply(context, arguments);</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="节流-throttle"><a href="#节流-throttle" class="headerlink" title="节流 throttle"></a>节流 throttle</h2><h3 id="思路：每次触发事件时都判断当前是否有等待执行的延时函数"><a href="#思路：每次触发事件时都判断当前是否有等待执行的延时函数" class="headerlink" title="思路：每次触发事件时都判断当前是否有等待执行的延时函数"></a>思路：每次触发事件时都判断当前是否有等待执行的延时函数</h3><p>  说明：高频事件触发，但在N秒内只会执行一次，所以节流会稀释函数的执行频率<br>  场景：鼠标mousemove/touchmove事件,滚动条scroll事件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const throttle = (fn, delay = 2000) =&gt; &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  // 在函数外围记录开始时间</span><br><span class="line">  let startTime = new Date();</span><br><span class="line">  return function() &#123;</span><br><span class="line">    const context = this;</span><br><span class="line">    // currentTime为调用时间</span><br><span class="line">    let currentTime = new Date();</span><br><span class="line">    // 调用时间大于等于开始时间，执行函数并且将调用时间重新设置为开始时间</span><br><span class="line">    if (currentTime - starTime &gt;= delay) &#123;</span><br><span class="line">      fn.apply(context, arguments);</span><br><span class="line">      startTime = currentTime;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 让方法在脱离事件后也能执行一次  场景是怎么样的？</span><br><span class="line">      timer = setTimeout(() =&gt; &#123;</span><br><span class="line">        fn.apply(context, arguments);</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -478,263 +365,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/first-post/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cleaverlove">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Royal Never Give UP">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/first-post/" itemprop="url">THIS IS PMX'S FIRST POST</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T20:15:33+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="这个是标题"><a href="#这个是标题" class="headerlink" title="这个是标题"></a>这个是标题</h2><p>我是内容区域开始了，有机会多多写写博客，就当做积累吧！</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不积跬步无以至千里</span><br></pre></td></tr></table></figure>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cleaverlove">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Royal Never Give UP">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/20/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-20T22:22:13+08:00">
-                2019-11-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -742,6 +377,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -762,8 +401,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -805,6 +453,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES5和ES6除了写法不同之外的区别"><span class="nav-number">1.</span> <span class="nav-text">ES5和ES6除了写法不同之外的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5常见的两种继承"><span class="nav-number">1.1.</span> <span class="nav-text">ES5常见的两种继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链继承"><span class="nav-number">1.1.1.</span> <span class="nav-text">原型链继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数继承"><span class="nav-number">1.1.2.</span> <span class="nav-text">构造函数继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6继承"><span class="nav-number">1.2.</span> <span class="nav-text">ES6继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this生成顺序不同，所以需要在constructor中，使用super"><span class="nav-number">1.2.2.</span> <span class="nav-text">this生成顺序不同，所以需要在constructor中，使用super()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下面进行一些对比"><span class="nav-number">1.2.3.</span> <span class="nav-text">下面进行一些对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另一种改变构造函数的方式"><span class="nav-number">1.2.4.</span> <span class="nav-text">另一种改变构造函数的方式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -938,6 +602,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

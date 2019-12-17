@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Royal Never Give UP">
 <meta property="og:description" content="防抖 debounce思路：每次触发事件都取消之前的延时调用方法  说明：触发高频事件后的N秒内函数只会执行一次，如果n秒内高频事件再次触发，则重新计算事件  场景： 按钮点击&#x2F;input输入&#x2F;页面的resize事件 12345678910111213141516const debounce = (fn, delay, immediate) =&amp;gt; &amp;#123;  let timer = nu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-16T12:35:58.580Z">
+<meta property="og:updated_time" content="2019-12-17T13:35:41.547Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -300,8 +300,8 @@
         <h2 id="防抖-debounce"><a href="#防抖-debounce" class="headerlink" title="防抖 debounce"></a>防抖 debounce</h2><h3 id="思路：每次触发事件都取消之前的延时调用方法"><a href="#思路：每次触发事件都取消之前的延时调用方法" class="headerlink" title="思路：每次触发事件都取消之前的延时调用方法"></a>思路：每次触发事件都取消之前的延时调用方法</h3><p>  说明：触发高频事件后的N秒内函数只会执行一次，如果n秒内高频事件再次触发，则重新计算事件<br>  场景： 按钮点击/input输入/页面的resize事件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const debounce = (fn, delay, immediate) =&gt; &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  return function() &#123;</span><br><span class="line">    // 定时器有值，清除定时器</span><br><span class="line">    timer &amp;&amp; clearTimeout(timer);</span><br><span class="line">    // 如果immediate为true, 刚开始立即执行</span><br><span class="line">    const context = this;</span><br><span class="line">    if (immediate) &#123;</span><br><span class="line">      // 错误示范 timer = fn.apply(context, arguments);</span><br><span class="line">      !timer &amp;&amp; fn.apply(context, arguments);</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(() =&gt; &#123;</span><br><span class="line">      fn.apply(context, arguments);</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>##节流 throttle</p>
-<h3 id="思路：每次触发事件时都判断当前是否有等待执行的延时函数"><a href="#思路：每次触发事件时都判断当前是否有等待执行的延时函数" class="headerlink" title="思路：每次触发事件时都判断当前是否有等待执行的延时函数"></a>思路：每次触发事件时都判断当前是否有等待执行的延时函数</h3><p>  说明：高频事件触发，但在N秒内只会执行一次，所以节流会稀释函数的执行频率<br>  场景：鼠标mousemove/touchmove事件,滚动条scroll事件</p>
+
+<h2 id="节流-throttle"><a href="#节流-throttle" class="headerlink" title="节流 throttle"></a>节流 throttle</h2><h3 id="思路：每次触发事件时都判断当前是否有等待执行的延时函数"><a href="#思路：每次触发事件时都判断当前是否有等待执行的延时函数" class="headerlink" title="思路：每次触发事件时都判断当前是否有等待执行的延时函数"></a>思路：每次触发事件时都判断当前是否有等待执行的延时函数</h3><p>  说明：高频事件触发，但在N秒内只会执行一次，所以节流会稀释函数的执行频率<br>  场景：鼠标mousemove/touchmove事件,滚动条scroll事件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const throttle = (fn, delay = 2000) =&gt; &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  // 在函数外围记录开始时间</span><br><span class="line">  let startTime = new Date();</span><br><span class="line">  return function() &#123;</span><br><span class="line">    const context = this;</span><br><span class="line">    // currentTime为调用时间</span><br><span class="line">    let currentTime = new Date();</span><br><span class="line">    // 调用时间大于等于开始时间，执行函数并且将调用时间重新设置为开始时间</span><br><span class="line">    if (currentTime - starTime &gt;= delay) &#123;</span><br><span class="line">      fn.apply(context, arguments);</span><br><span class="line">      startTime = currentTime;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 让方法在脱离事件后也能执行一次  场景是怎么样的？</span><br><span class="line">      timer = setTimeout(() =&gt; &#123;</span><br><span class="line">        fn.apply(context, arguments);</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -336,6 +336,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/17/ES5%20AND%20ES6%20diff/" rel="prev" title="ES5 AND ES6 diff">
+                ES5 AND ES6 diff <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -412,7 +416,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -449,7 +453,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#防抖-debounce"><span class="nav-number">1.</span> <span class="nav-text">防抖 debounce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路：每次触发事件都取消之前的延时调用方法"><span class="nav-number">1.1.</span> <span class="nav-text">思路：每次触发事件都取消之前的延时调用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路：每次触发事件时都判断当前是否有等待执行的延时函数"><span class="nav-number">1.2.</span> <span class="nav-text">思路：每次触发事件时都判断当前是否有等待执行的延时函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#防抖-debounce"><span class="nav-number">1.</span> <span class="nav-text">防抖 debounce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路：每次触发事件都取消之前的延时调用方法"><span class="nav-number">1.1.</span> <span class="nav-text">思路：每次触发事件都取消之前的延时调用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#节流-throttle"><span class="nav-number">2.</span> <span class="nav-text">节流 throttle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路：每次触发事件时都判断当前是否有等待执行的延时函数"><span class="nav-number">2.1.</span> <span class="nav-text">思路：每次触发事件时都判断当前是否有等待执行的延时函数</span></a></li></ol></li></ol></div>
             
 
           </div>
