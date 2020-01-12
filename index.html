@@ -228,6 +228,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/12/%E5%AD%A6%E4%B9%A0TypeScript%E7%B3%BB%E5%88%97-%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cleaverlove">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royal Never Give UP">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/12/%E5%AD%A6%E4%B9%A0TypeScript%E7%B3%BB%E5%88%97-%E7%AE%80%E4%BB%8B/" itemprop="url">学习TypeScript系列--简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T12:39:45+08:00">
+                2020-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是TypeScript"><a href="#什么是TypeScript" class="headerlink" title="什么是TypeScript"></a>什么是TypeScript</h2><p>  <a href="http://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a>是JavaScript的一个超集，主要提供了类型系统和对ES6的支持，它由Microsoft开发，代码开源在<a href="https://github.com/Microsoft/TypeScript" target="_blank" rel="noopener">Github</a>上。<br>  引用官网的定义，翻译成中文即:</p>
+<blockquote>
+<p> TypeScript 是 JavaScript 的类型的超集，它可以编译成纯 JavaScript。编译出来的 JavaScript 可以运行在任何浏览器上。TypeScript 编译工具可以运行在任何服务器和任何系统上。TypeScript 是开源的。</p>
+</blockquote>
+<h2 id="TypeScript的优势"><a href="#TypeScript的优势" class="headerlink" title="TypeScript的优势"></a>TypeScript的优势</h2><p>TypeScript官网列举了一些优势，具体可参考官网。<br>TypeScript增加了代码的可读性可维护性:</p>
+<ul>
+<li>类型系统实际上是最好的文档，大部分的函数看看类型的定义就可以知道如何使用了。</li>
+<li>可以再编译阶段就发现大部分错误</li>
+<li>增加了编辑器和IDE的功能，包括代码补全，接口提示，跳转到定义，重构等</li>
+</ul>
+<p>TypeScript的包容性</p>
+<ul>
+<li>TypeScript是JavaScript的一个超集, .js文件可以直接重命名为.ts即可</li>
+<li>即使不显示的定义类型，也能够自动做出 <a href="http://www.typescriptlang.org/docs/handbook/type-inference.html" target="_blank" rel="noopener">类型推论</a></li>
+<li>可以定义从简单到复杂的几乎一切类型</li>
+<li>即使TypeScript编辑报错，也可以生产JavaScript文件</li>
+<li>兼容第三方库，即使第三方库不是用TypeScript写的，也可以编写单独的类型文件供TypeScript读取</li>
+</ul>
+<p>TypeScript拥有活跃的社区</p>
+<ul>
+<li>大部分第三方库都有提供给TypeScript的类型定义文件</li>
+<li>Google开发的angular2就是使用TypeScript编写的</li>
+<li>TypeScript拥抱了ES6规范，也支持部分ESNext草案的规范</li>
+<li>再补充个， VUE3.0也用TypeScript重写了</li>
+</ul>
+<p>TypeScript的缺点</p>
+<ul>
+<li>有一定门槛，需要理解 <strong>接口(interface)</strong>， <strong>泛型(Generics)</strong>， <strong>类(Classes)</strong>, <strong>枚举类型(Enums)</strong> 等概念</li>
+<li>短期增加一些开发成本，毕竟需要多些一些类型的定义。不过对于长期项目，TypeScript能够减少其维护成本</li>
+<li>集成到构建流程需要一些工作量</li>
+<li>可能和一些库结合的不是很完美</li>
+</ul>
+<h2 id="安装TypeScript"><a href="#安装TypeScript" class="headerlink" title="安装TypeScript"></a>安装TypeScript</h2><p>  TypeScript 的命令行工具安装方法如下：</p>
+<blockquote>
+<p> npm install -g typescript</p>
+</blockquote>
+<p>  以上命令会在全局环境下安装 tsc 命令，安装完成之后，我们就可以在任何地方执行 tsc 命令了。<br>  编译一个 TypeScript 文件很简单：</p>
+<blockquote>
+<p> tsc hello.ts</p>
+</blockquote>
+<p>  我们约定使用 TypeScript 编写的文件以 .ts 为后缀，用 TypeScript 编写 React 时，以 .tsx 为后缀。</p>
+<h2 id="Hello-TypeScript"><a href="#Hello-TypeScript" class="headerlink" title="Hello TypeScript"></a>Hello TypeScript</h2><p>  将以下代码复制到 hello.ts 中：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person: string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello, '</span> + person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> user = <span class="string">'Tom'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(sayHello(user));</span><br></pre></td></tr></table></figure><br>  然后执行</p>
+<blockquote>
+<p> tsc hello.ts</p>
+</blockquote>
+<p>  这时候会生成一个编译好的文件 hello.js：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello, '</span> + person;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> user = <span class="string">'Tom'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(sayHello(user));</span><br></pre></td></tr></table></figure><br>  TypeScript 中，使用 : 指定变量的类型，: 的前后有没有空格都可以。<br>  上述例子中，我们用 : 指定 person 参数类型为 string。但是编译为 js 之后，并没有什么检查的代码被插入进来。<br>  <strong>TypeScript 只会进行静态检查，如果发现有错误，编译的时候就会报错。</strong><br>  <strong>注意： ypeScript 编译的时候即使报错了，还是会生成编译结果，我们仍然可以使用这个编译之后的文件。</strong><br>  如果要在报错的时候终止JS文件的生成，可以在tsconfig.json中配置noEmitOnError即可，</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -931,7 +1096,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -944,7 +1109,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -981,7 +1146,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
